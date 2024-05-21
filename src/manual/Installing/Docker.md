@@ -82,7 +82,7 @@ The ClamAV Docker images are subject to ClamAV's [End-of-Life (EOL) policy](../.
 
 ## Building the ClamAV image
 
-While it is recommended to pull the image from our [Docker Hub registry](https://hub.docker.com/u/clamav/clamav), some may want to build the image locally instead.
+While it is recommended to pull the image from our [Docker Hub registry](https://hub.docker.com/r/clamav/clamav), some may want to build the image locally instead.
 
 To do this, you will need to get the  `Dockerfile` and the supporting `scripts/` directory from the [clamav-docker Git repository](https://github.com/Cisco-Talos/clamav-docker/tree/main/clamav). Be sure to select the correct one for this ClamAV release.
 
@@ -223,7 +223,7 @@ docker run -it --rm \
     clamscan /scandir
 ```
 
-However, this will use whatever signatures are found in the image, which may be slightly out of date. If using `clamscan` in this way, it would be best to use a [database volume](#running-with-a-mounted-database-directory-volume) that is up-to-date so that you scan with the latest signatures. E.g.:
+However, this will use whatever signatures are found in the image, which may be slightly out of date. If using `clamscan` in this way, it would be best to use a [database volume](#persisting-the-virus-database-volume) that is up-to-date so that you scan with the latest signatures. E.g.:
 ```bash
 docker run -it --rm \
     --mount type=bind,source=/path/to/scan,target=/scandir \
